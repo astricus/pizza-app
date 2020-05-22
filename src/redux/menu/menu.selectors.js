@@ -13,6 +13,16 @@ export const selectCollectionsForPreview = createSelector(
     collections ? Object.keys(collections).map((key) => collections[key]) : []
 );
 
+export const selectCurrencyCoefficient = createSelector(
+  [selectMenu],
+  (menu) => menu.currencyCoefficient
+);
+
+export const selectCurrencySymbol = createSelector(
+  [selectMenu],
+  (menu) => menu.currencySymbol
+);
+
 export const selectCollection = (collectionUrlParam) =>
   createSelector([selectCollections], (collections) =>
     collections ? collections[collectionUrlParam] : null

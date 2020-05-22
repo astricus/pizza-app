@@ -3,7 +3,10 @@ import { addItemToCart, removeItemFromCart } from './cart.utils';
 
 const INITIAL_STATE = {
   hidden: true,
+  deliveryCost: 5,
   cartItems: [],
+  currentOrder: null,
+  error: null,
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -39,6 +42,17 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: action.payload,
+      };
+    case CartActionTypes.PLACE_ORDER_SUCCESS:
+      return {
+        ...state,
+        currentOrder: action.payload,
+        error: null,
+      };
+    case CartActionTypes.PLACE_ORDER_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

@@ -1,10 +1,5 @@
 import MenuActionTypes from './menu.types';
 
-// import {
-//   firestore,
-//   convertCollectionsSnapshotToMap,
-// } from '../../firebase/firebase.utils';
-
 export const fetchCollectionsStart = () => ({
   type: MenuActionTypes.FETCH_COLLECTIONS_START,
 });
@@ -19,18 +14,7 @@ export const fetchCollectionsFailure = (errorMessage) => ({
   payload: errorMessage,
 });
 
-// export const fetchCollectionsStartAsync = () => {
-//   return (dispatch) => {
-//     const collectionRef = firestore.collection('menu');
-//     console.log(collectionRef);
-//     dispatch(fetchCollectionsStart());
-
-//     collectionRef
-//       .get()
-//       .then((snapshot) => {
-//         const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-//         dispatch(fetchCollectionsSuccess(collectionsMap));
-//       })
-//       .catch((error) => dispatch(fetchCollectionsFailure(error.message)));
-//   };
-// };
+export const setCurrency = (currency) => ({
+  type: MenuActionTypes.SET_CURRENCY,
+  payload: currency,
+});

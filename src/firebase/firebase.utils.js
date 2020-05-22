@@ -52,6 +52,12 @@ export const getUserCartRef = async (userId) => {
   }
 };
 
+export const setCurrentOrder = async (orderData, currentUserId, cartItems) => {
+  const orderDocRef = firestore.collection('orders').doc();
+  await orderDocRef.set({ ...orderData, currentUserId, cartItems: cartItems });
+  return orderDocRef;
+};
+
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd

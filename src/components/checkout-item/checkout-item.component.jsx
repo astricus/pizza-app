@@ -1,26 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import {
   clearItemFromCart,
   addItem,
-  removeItem
+  removeItem,
 } from '../../redux/cart/cart.actions';
+
+import {
+  selectCurrencyCoefficient,
+  selectCurrencySymbol,
+} from '../../redux/menu/menu.selectors';
 
 import {
   CheckoutItemContainer,
   ImageContainer,
   TextContainer,
   QuantityContainer,
-  RemoveButtonContainer
+  RemoveButtonContainer,
 } from './checkout-item.styles';
 
-export const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
+export const CheckoutItem = ({
+  cartItem,
+  clearItem,
+  addItem,
+  removeItem,
+  currencyCoefficient,
+  currencySymbol,
+}) => {
   const { name, imageUrl, price, quantity } = cartItem;
   return (
     <CheckoutItemContainer>
       <ImageContainer>
-        <img src={imageUrl} alt='item' />
+        <img src={imageUrl} alt="item" />
       </ImageContainer>
       <TextContainer>{name}</TextContainer>
       <QuantityContainer>
@@ -28,7 +41,10 @@ export const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
         <span>{quantity}</span>
         <div onClick={() => addItem(cartItem)}>&#10095;</div>
       </QuantityContainer>
-      <TextContainer>{price}</TextContainer>
+      <TextContainer>
+        {currencySymbol}
+        {(price * currencyCoefficient).toFixed(2)}
+      </TextContainer>
       <RemoveButtonContainer onClick={() => clearItem(cartItem)}>
         &#10005;
       </RemoveButtonContainer>
@@ -36,13 +52,15 @@ export const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  clearItem: item => dispatch(clearItemFromCart(item)),
-  addItem: item => dispatch(addItem(item)),
-  removeItem: item => dispatch(removeItem(item))
+const mapStateToProps = createStructuredSelector({
+  currencyCoefficient: selectCurrencyCoefficient,
+  currencySymbol: selectCurrencySymbol,
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CheckoutItem);
+const mapDispatchToProps = (dispatch) => ({
+  clearItem: (item) => dispatch(clearItemFromCart(item)),
+  addItem: (item) => dispatch(addItem(item)),
+  removeItem: (item) => dispatch(removeItem(item)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutItem);

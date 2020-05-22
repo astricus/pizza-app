@@ -1,7 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { addItem } from '../../redux/cart/cart.actions';
+
+import {
+  selectCurrencyCoefficient,
+  selectCurrencySymbol,
+} from '../../redux/menu/menu.selectors';
 
 import {
   CollectionItemContainer,
@@ -9,18 +15,26 @@ import {
   AddButton,
   BackgroundImage,
   NameContainer,
-  PriceContainer
+  PriceContainer,
 } from './collection-item.styles';
 
-export const CollectionItem = ({ item, addItem }) => {
+export const CollectionItem = ({
+  item,
+  addItem,
+  currencyCoefficient,
+  currencySymbol,
+}) => {
   const { name, price, imageUrl } = item;
 
   return (
     <CollectionItemContainer>
-      <BackgroundImage className='image' imageUrl={imageUrl} />
+      <BackgroundImage className="image" imageUrl={imageUrl} />
       <CollectionFooterContainer>
         <NameContainer>{name}</NameContainer>
-        <PriceContainer>{price}</PriceContainer>
+        <PriceContainer>
+          {currencySymbol}
+          {(price * currencyCoefficient).toFixed(2)}
+        </PriceContainer>
       </CollectionFooterContainer>
       <AddButton onClick={() => addItem(item)} inverted>
         Add to cart
@@ -29,11 +43,13 @@ export const CollectionItem = ({ item, addItem }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  addItem: item => dispatch(addItem(item))
+const mapStateToProps = createStructuredSelector({
+  currencyCoefficient: selectCurrencyCoefficient,
+  currencySymbol: selectCurrencySymbol,
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CollectionItem);
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (item) => dispatch(addItem(item)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionItem);
