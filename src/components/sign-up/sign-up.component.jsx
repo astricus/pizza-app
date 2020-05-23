@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import FormInput from '../form-input/form-input.component';
-import FormSelect from '../form-select/form-select.component';
 import CustomButton from '../custom-button/custom-button.component';
 
 import { signUpStart } from '../../redux/user/user.actions';
@@ -13,20 +12,11 @@ const SignUp = ({ signUpStart }) => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: '',
     email: '',
-    address: '',
-    currency: 'USD',
     password: '',
     confirmPassword: '',
   });
 
-  const {
-    displayName,
-    email,
-    address,
-    currency,
-    password,
-    confirmPassword,
-  } = userCredentials;
+  const { displayName, email, password, confirmPassword } = userCredentials;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,7 +26,7 @@ const SignUp = ({ signUpStart }) => {
       return;
     }
 
-    signUpStart({ displayName, email, address, currency, password });
+    signUpStart({ displayName, email, password });
   };
 
   const handleChange = (event) => {
@@ -47,7 +37,7 @@ const SignUp = ({ signUpStart }) => {
 
   return (
     <SignUpContainer>
-      <SignUpTitle>I do not have a account</SignUpTitle>
+      <SignUpTitle>I do not have an account</SignUpTitle>
       <span>Sign up with your email and password</span>
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <FormInput
@@ -65,20 +55,6 @@ const SignUp = ({ signUpStart }) => {
           onChange={handleChange}
           label="Email"
           required
-        />
-        <FormInput
-          type="text"
-          name="address"
-          value={address}
-          onChange={handleChange}
-          label="Address"
-          required
-        />
-        <FormSelect
-          name="currency"
-          value={currency}
-          onChange={handleChange}
-          label="Currency"
         />
         <FormInput
           type="password"

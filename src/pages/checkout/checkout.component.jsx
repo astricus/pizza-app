@@ -6,6 +6,7 @@ import CheckoutItem from '../../components/checkout-item/checkout-item.component
 import FormInput from '../../components/form-input/form-input.component';
 import FormSelect from '../../components/form-select/form-select.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
+import PriceContainer from '../../components/price/price.component';
 
 import {
   selectCartItems,
@@ -13,8 +14,10 @@ import {
   selectDeliveryCost,
 } from '../../redux/cart/cart.selectors';
 
-import { placeOrderStart } from '../../redux/cart/cart.actions';
+import { placeOrderStart } from '../../redux/order/order.actions';
 import { setCurrency } from '../../redux/menu/menu.actions';
+
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import {
   CheckoutPageContainer,
@@ -22,19 +25,18 @@ import {
   HeaderBlockContainer,
   TotalContainer,
 } from './checkout.styles';
-import { selectCurrencySymbol } from '../../redux/menu/menu.selectors';
 
 export const CheckoutPage = ({
+  currentUser,
   cartItems,
   total,
   deliveryCost,
   placeOrderStart,
   setCurrency,
-  currencySymbol,
 }) => {
   const [userCredentials, setUserCredentials] = useState({
-    displayName: '',
-    email: '',
+    displayName: currentUser ? currentUser.displayName : '',
+    email: currentUser ? currentUser.email : '',
     phone: '',
     address: '',
     currency: 'USD',
@@ -76,12 +78,10 @@ export const CheckoutPage = ({
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
       <TotalContainer>
-        DELIVERY: {currencySymbol}
-        {deliveryCost}
+        DELIVERY: <PriceContainer price={deliveryCost} />
       </TotalContainer>
       <TotalContainer>
-        TOTAL: {currencySymbol}
-        {total}
+        TOTAL: <PriceContainer price={total} />
       </TotalContainer>
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <FormInput
@@ -129,10 +129,10 @@ export const CheckoutPage = ({
 };
 
 const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
   cartItems: selectCartItems,
   total: selectCartTotal,
   deliveryCost: selectDeliveryCost,
-  currencySymbol: selectCurrencySymbol,
 });
 
 const mapDispatchToProps = (dispatch) => ({

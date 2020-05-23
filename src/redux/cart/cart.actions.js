@@ -31,18 +31,3 @@ export const setCartFromFirebase = (cartItems) => ({
   type: CartActionTypes.SET_CART_FROM_FIREBASE,
   payload: cartItems,
 });
-
-export const placeOrderStart = (orderData) => ({
-  type: CartActionTypes.PLACE_ORDER_START,
-  payload: orderData,
-});
-
-export const placeOrderSuccess = (order) => ({
-  type: CartActionTypes.PLACE_ORDER_SUCCESS,
-  payload: order,
-});
-
-export const placeOrderFailure = (error) => ({
-  type: CartActionTypes.PLACE_ORDER_FAILURE,
-  payload: error,
-});

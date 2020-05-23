@@ -2,10 +2,12 @@ import CartActionTypes from './cart.types';
 import { addItemToCart, removeItemFromCart } from './cart.utils';
 
 const INITIAL_STATE = {
+  isFetching: false,
   hidden: true,
   deliveryCost: 5,
   cartItems: [],
   currentOrder: null,
+  currentUserOrders: null,
   error: null,
 };
 
@@ -52,6 +54,24 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case CartActionTypes.PLACE_ORDER_FAILURE:
       return {
         ...state,
+        error: action.payload,
+      };
+    case CartActionTypes.GET_USER_ORDERS_START:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case CartActionTypes.GET_USER_ORDERS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        currentUserOrders: action.payload,
+        error: null,
+      };
+    case CartActionTypes.GET_USER_ORDERS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
         error: action.payload,
       };
     default:

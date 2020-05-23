@@ -1,76 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+import Orders from '../../components/orders/orders.component';
 
-import {
-  selectCartItems,
-  selectCartTotal,
-  selectDeliveryCost,
-} from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
-import { placeOrderStart } from '../../redux/cart/cart.actions';
-import { setCurrency } from '../../redux/menu/menu.actions';
+import { getUserOrdersStart } from '../../redux/order/order.actions';
 
-import {
-  CheckoutPageContainer,
-  CheckoutHeaderContainer,
-  HeaderBlockContainer,
-  TotalContainer,
-} from './orders.styles';
-import { selectCurrencySymbol } from '../../redux/menu/menu.selectors';
+export const OrdersPage = ({ currentUser, getUserOrdersStart }) => {
+  useEffect(() => {
+    if (currentUser) getUserOrdersStart();
+  }, [getUserOrdersStart, currentUser]);
 
-export const OrdersPage = ({
-  cartItems,
-  total,
-  deliveryCost,
-  currencySymbol,
-}) => {
-  return (
-    <CheckoutPageContainer>
-      <CheckoutHeaderContainer>
-        <HeaderBlockContainer>
-          <span>Product</span>
-        </HeaderBlockContainer>
-        <HeaderBlockContainer>
-          <span>Description</span>
-        </HeaderBlockContainer>
-        <HeaderBlockContainer>
-          <span>Quantity</span>
-        </HeaderBlockContainer>
-        <HeaderBlockContainer>
-          <span>Price</span>
-        </HeaderBlockContainer>
-        <HeaderBlockContainer>
-          <span>Remove</span>
-        </HeaderBlockContainer>
-      </CheckoutHeaderContainer>
-      {cartItems.map((cartItem) => (
-        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-      ))}
-      <TotalContainer>
-        DELIVERY: {currencySymbol}
-        {deliveryCost}
-      </TotalContainer>
-      <TotalContainer>
-        TOTAL: {currencySymbol}
-        {total}
-      </TotalContainer>
-    </CheckoutPageContainer>
-  );
+  return <Orders />;
 };
 
 const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  total: selectCartTotal,
-  deliveryCost: selectDeliveryCost,
-  currencySymbol: selectCurrencySymbol,
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  placeOrderStart: (orderData) => dispatch(placeOrderStart(orderData)),
-  setCurrency: (currency) => dispatch(setCurrency(currency)),
+  getUserOrdersStart: () => dispatch(getUserOrdersStart()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrdersPage);

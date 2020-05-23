@@ -9,6 +9,7 @@ import ErrorBoundary from './components/error-boundary/error-boundary.component'
 
 import { GlobalStyle } from './global.styles';
 
+import { selectCartItems } from './redux/cart/cart.selectors';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { checkUserSession } from './redux/user/user.actions';
 
@@ -20,7 +21,7 @@ const SignInAndSignUpPage = lazy(() =>
 const CheckoutPage = lazy(() => import('./pages/checkout/checkout.component'));
 const OrdersPage = lazy(() => import('./pages/orders/orders.component'));
 
-const App = ({ checkUserSession, currentUser }) => {
+const App = ({ checkUserSession, currentUser, cartItems }) => {
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);
@@ -34,8 +35,20 @@ const App = ({ checkUserSession, currentUser }) => {
           <Suspense fallback={<Spinner />}>
             <Route exact path="/" component={HomePage} />
             <Route path="/menu" component={MenuPage} />
-            <Route path="/orders" component={OrdersPage} />
-            <Route exact path="/checkout" component={CheckoutPage} />
+            <Route
+              exact
+              path="/orders"
+              render={() =>
+                currentUser ? <OrdersPage /> : <Redirect to="/" />
+              }
+            />
+            <Route
+              exact
+              path="/checkout"
+              render={() =>
+                cartItems.length ? <CheckoutPage /> : <Redirect to="/" />
+              }
+            />
             <Route
               exact
               path="/signin"
@@ -52,6 +65,7 @@ const App = ({ checkUserSession, currentUser }) => {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  cartItems: selectCartItems,
 });
 
 const mapDispatchToProps = (dispatch) => ({

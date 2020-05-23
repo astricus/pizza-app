@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { selectCurrencyCoefficient } from '../menu/menu.selectors';
 
 const selectCart = (state) => state.cart;
 
@@ -9,9 +8,8 @@ export const selectCartItems = createSelector(
 );
 
 export const selectDeliveryCost = createSelector(
-  [selectCart, selectCurrencyCoefficient],
-  (cart, currencyCoefficient) =>
-    (cart.deliveryCost * currencyCoefficient).toFixed(2)
+  [selectCart],
+  (cart) => cart.deliveryCost
 );
 
 export const selectCartHidden = createSelector(
@@ -30,14 +28,11 @@ export const selectCartItemsCount = createSelector(
 );
 
 export const selectCartTotal = createSelector(
-  [selectCartItems, selectDeliveryCost, selectCurrencyCoefficient],
-  (cartItems, deliveryCost, currencyCoefficient) =>
-    cartItems
-      .reduce(
-        (accumalatedQuantity, cartItem) =>
-          accumalatedQuantity +
-          cartItem.quantity * cartItem.price * currencyCoefficient,
-        deliveryCost * currencyCoefficient
-      )
-      .toFixed(2)
+  [selectCartItems, selectDeliveryCost],
+  (cartItems, deliveryCost) =>
+    cartItems.reduce(
+      (accumalatedQuantity, cartItem) =>
+        accumalatedQuantity + cartItem.quantity * cartItem.price,
+      deliveryCost
+    )
 );

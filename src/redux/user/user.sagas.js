@@ -10,6 +10,8 @@ import {
   signUpSuccess,
   signUpFailure,
 } from './user.actions';
+import { clearCart } from '../cart/cart.actions';
+import { clearUserOrders } from '../order/order.actions';
 
 import {
   auth,
@@ -69,20 +71,23 @@ export function* signOut() {
   }
 }
 
-export function* signUp({
-  payload: { email, password, displayName, address, currency },
-}) {
+export function* signUp({ payload: { email, password, displayName } }) {
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     yield put(
       signUpSuccess({
         user,
-        additionalData: { displayName, address, currency },
+        additionalData: { displayName },
       })
     );
   } catch (error) {
     yield put(signUpFailure(error));
   }
+}
+
+export function* clearStateAfterSignOut() {
+  yield put(clearCart());
+  yield put(clearUserOrders());
 }
 
 export function* signInAfterSignUp({ payload: { user, additionalData } }) {
@@ -105,6 +110,10 @@ export function* onSignOutStart() {
   yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut);
 }
 
+export function* onSignOutSuccess() {
+  yield takeLatest(UserActionTypes.SIGN_OUT_SUCCESS, clearStateAfterSignOut);
+}
+
 export function* onSignUpStart() {
   yield takeLatest(UserActionTypes.SIGN_UP_START, signUp);
 }
@@ -119,6 +128,7 @@ export function* userSagas() {
     call(onEmailSignInStart),
     call(onCheckUserSession),
     call(onSignOutStart),
+    call(onSignOutSuccess),
     call(onSignUpStart),
     call(onSignUpSuccess),
   ]);

@@ -80,9 +80,9 @@ export const NameContainer = styled.span`
 
 NameContainer.displayName = 'NameContainer';
 
-export const PriceContainer = styled.span`
+export const ItemPriceContainer = styled.span`
   width: 10%;
   text-align: right;
 `;
 
-PriceContainer.displayName = 'PriceContainer';
+ItemPriceContainer.displayName = 'ItemPriceContainer';

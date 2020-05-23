@@ -52,9 +52,26 @@ export const getUserCartRef = async (userId) => {
   }
 };
 
-export const setCurrentOrder = async (orderData, currentUserId, cartItems) => {
+export const getUserOrders = async (userId) => {
+  const ordersRef = firestore
+    .collection('orders')
+    .where('userId', '==', userId);
+  const snapShot = await ordersRef.get();
+  const orders = snapShot.docs.map((order) => ({
+    ...order.data(),
+    createdAt: order.data().createdAt.toDate(),
+    id: order.id,
+  }));
+  return orders;
+};
+
+export const setCurrentOrder = async (order) => {
   const orderDocRef = firestore.collection('orders').doc();
-  await orderDocRef.set({ ...orderData, currentUserId, cartItems: cartItems });
+  const currentDate = new Date();
+  await orderDocRef.set({
+    ...order,
+    createdAt: currentDate,
+  });
   return orderDocRef;
 };
 
