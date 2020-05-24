@@ -9,6 +9,7 @@ export const CartContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 10px;
   cursor: pointer;
 `;
 

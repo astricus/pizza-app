@@ -10,22 +10,35 @@ export const CheckoutItemContainer = styled.div`
   align-items: center;
 
   @media screen and (max-width: 800px) {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 400px) {
+    min-height: 80px;
+    font-size: 16px;
+    padding: 10px 0;
   }
 `;
 
 export const ImageContainer = styled.div`
-  width: 23%;
+  width: 22%;
   padding-right: 15px;
 
   img {
     width: 100%;
-    height: 100%;
+    min-height: 70px;
+    object-fit: cover;
+  }
+
+  @media screen and (max-width: 400px) {
+    img {
+      min-height: 50px;
+    }
   }
 `;
 
 export const TextContainer = styled.span`
-  width: 23%;
+  width: 22%;
 
   @media screen and (max-width: 800px) {
     width: 22%;
@@ -47,7 +60,9 @@ export const QuantityContainer = styled(TextContainer)`
 QuantityContainer.displayName = 'QuantityContainer';
 
 export const RemoveButtonContainer = styled.div`
-  padding-left: 12px;
+  width: 12%;
+  text-align: right;
+  padding-right: 12px;
   cursor: pointer;
 `;
 

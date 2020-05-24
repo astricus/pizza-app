@@ -8,6 +8,7 @@ export const CollectionPageContainer = styled.div`
 
 export const CollectionTitle = styled.h2`
   font-size: 38px;
+  font-family: 'Playfair Display', serif;
   margin: 0 auto 30px;
 `;
 
@@ -22,6 +23,11 @@ export const CollectionItemsContainer = styled.div`
 
   @media screen and (max-width: 800px) {
     grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+  }
+
+  @media screen and (max-width: 400px) {
+    grid-template-columns: 1fr;
     grid-gap: 15px;
   }
 `;

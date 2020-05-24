@@ -9,6 +9,7 @@ import {
   getUserOrdersFailure,
 } from './order.actions';
 import { clearCart } from '../cart/cart.actions';
+import { setCurrency } from '../menu/menu.actions';
 import {
   selectCartItems,
   selectDeliveryCost,
@@ -57,8 +58,9 @@ export function* getUserOrdersFromFirebase() {
   }
 }
 
-export function* clearCartAfterOrderSuccess() {
+export function* clearCartAndSetCurrencyAfterOrderSuccess() {
   yield put(clearCart());
+  yield put(setCurrency());
 }
 
 export function* onPlaceOrderStart() {
@@ -68,7 +70,7 @@ export function* onPlaceOrderStart() {
 export function* onPlaceOrderSuccess() {
   yield takeLatest(
     OrderActionTypes.PLACE_ORDER_SUCCESS,
-    clearCartAfterOrderSuccess
+    clearCartAndSetCurrencyAfterOrderSuccess
   );
 }
 

@@ -1,20 +1,8 @@
 import styled from 'styled-components';
 
 export const OrderPageContainer = styled.div`
-  width: 55%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px auto 0;
-
-  button {
-    margin-left: auto;
-    margin-top: 50px;
-  }
-
-  @media screen and (max-width: 800px) {
-    width: 90%;
-  }
+  width: 100%;
+  margin-bottom: 30px;
 `;
 
 export const OrderHeaderContainer = styled.div`
@@ -36,7 +24,6 @@ export const HeaderBlockContainer = styled.div`
 `;
 
 export const TotalContainer = styled.div`
-  margin-top: 30px;
   margin-left: auto;
-  font-size: 36px;
+  font-size: 24px;
 `;

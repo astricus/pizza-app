@@ -21,6 +21,8 @@ import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import {
   CheckoutPageContainer,
+  CartItemsContainer,
+  FormContainer,
   CheckoutHeaderContainer,
   HeaderBlockContainer,
   TotalContainer,
@@ -57,73 +59,77 @@ export const CheckoutPage = ({
 
   return (
     <CheckoutPageContainer>
-      <CheckoutHeaderContainer>
-        <HeaderBlockContainer>
-          <span>Product</span>
-        </HeaderBlockContainer>
-        <HeaderBlockContainer>
-          <span>Description</span>
-        </HeaderBlockContainer>
-        <HeaderBlockContainer>
-          <span>Quantity</span>
-        </HeaderBlockContainer>
-        <HeaderBlockContainer>
-          <span>Price</span>
-        </HeaderBlockContainer>
-        <HeaderBlockContainer>
-          <span>Remove</span>
-        </HeaderBlockContainer>
-      </CheckoutHeaderContainer>
-      {cartItems.map((cartItem) => (
-        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-      ))}
-      <TotalContainer>
-        DELIVERY: <PriceContainer price={deliveryCost} />
-      </TotalContainer>
-      <TotalContainer>
-        TOTAL: <PriceContainer price={total} />
-      </TotalContainer>
-      <form className="sign-up-form" onSubmit={handleSubmit}>
-        <FormInput
-          type="text"
-          name="displayName"
-          value={displayName}
-          onChange={handleChange}
-          label="Display Name"
-          required
-        />
-        <FormInput
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChange}
-          label="Email"
-          required
-        />
-        <FormInput
-          type="tel"
-          name="phone"
-          value={phone}
-          onChange={handleChange}
-          label="Phone"
-          required
-        />
-        <FormInput
-          type="text"
-          name="address"
-          value={address}
-          onChange={handleChange}
-          label="Address"
-          required
-        />
-        <FormSelect
-          name="currency"
-          value={currency}
-          onChange={handleChange}
-          label="Currency"
-        />
-        <CustomButton type="submit">PLACE ORDER</CustomButton>
-      </form>
+      <CartItemsContainer>
+        <CheckoutHeaderContainer>
+          <HeaderBlockContainer>
+            <span>Product</span>
+          </HeaderBlockContainer>
+          <HeaderBlockContainer>
+            <span>Description</span>
+          </HeaderBlockContainer>
+          <HeaderBlockContainer>
+            <span>Quantity</span>
+          </HeaderBlockContainer>
+          <HeaderBlockContainer>
+            <span>Price</span>
+          </HeaderBlockContainer>
+          <HeaderBlockContainer>
+            <span>Remove</span>
+          </HeaderBlockContainer>
+        </CheckoutHeaderContainer>
+        {cartItems.map((cartItem) => (
+          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+        ))}
+        <TotalContainer>
+          DELIVERY: <PriceContainer price={deliveryCost} />
+        </TotalContainer>
+        <TotalContainer>
+          TOTAL: <PriceContainer price={total} />
+        </TotalContainer>
+      </CartItemsContainer>
+      <FormContainer>
+        <form onSubmit={handleSubmit}>
+          <FormInput
+            type="text"
+            name="displayName"
+            value={displayName}
+            onChange={handleChange}
+            label="Display Name"
+            required
+          />
+          <FormInput
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            label="Email"
+            required
+          />
+          <FormInput
+            type="tel"
+            name="phone"
+            value={phone}
+            onChange={handleChange}
+            label="Phone"
+            required
+          />
+          <FormInput
+            type="text"
+            name="address"
+            value={address}
+            onChange={handleChange}
+            label="Address"
+            required
+          />
+          <FormSelect
+            name="currency"
+            value={currency}
+            onChange={handleChange}
+            label="Currency"
+          />
+          <CustomButton type="submit">PLACE ORDER</CustomButton>
+        </form>
+      </FormContainer>
     </CheckoutPageContainer>
   );
 };
