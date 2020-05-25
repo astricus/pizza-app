@@ -24,9 +24,9 @@ List of features:
 - User can order one or multiple different pizzas :pizza:
 - User can choose currency (:dollar: or :euro:) of the order
 - Delivery cost is added to the final total price
-- All orders are stored in database
-- User can sign-up, sign-in, sign-in with Google account. After sign-up user data is stored in database. As a signed-in user can view his/her orders
-- User can add pizza/pizzas to cart. If a user is signed-in, his/her items in cart are also stored in database, so he/she can continue placing an order anytime. After an order has been placed, cart is cleared
+- All orders are stored in the database
+- User can sign-up, sign-in, sign-in with Google account. After signing-up user's data is stored in the database. A signed-in user can view his/her orders
+- User can add pizza/pizzas to cart. If a user is signed-in, his/her items in cart are also stored in the database, so he/she can continue placing an order anytime. After an order has been placed cart is cleared
 
 ## Available Scripts
 
