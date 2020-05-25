@@ -63,7 +63,7 @@ export const getUserOrders = async (userId) => {
       createdAt: order.data().createdAt.toDate(),
       id: order.id,
     }))
-    .sort((a, b) => a.createdAt < b.createdAt);
+    .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
   return orders;
 };
 
