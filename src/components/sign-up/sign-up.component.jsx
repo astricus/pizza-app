@@ -18,20 +18,31 @@ const SignUp = ({ signUpStart }) => {
 
   const { displayName, email, password, confirmPassword } = userCredentials;
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const validateInput = () => {
+    let isValid = true;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(email.trim())) {
+      alert('Your email is not correct');
+      isValid &= false;
+    }
 
     if (password !== confirmPassword) {
       alert("Passwords don't match");
-      return;
+      isValid &= false;
     }
 
     if (password.length < 6) {
       alert('Password should contain more than 6 symbols');
-      return;
+      isValid &= false;
     }
 
-    signUpStart({ displayName, email, password });
+    return isValid;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const isValid = validateInput();
+    if (isValid) signUpStart({ displayName, email, password });
   };
 
   const handleChange = (event) => {
@@ -66,7 +77,7 @@ const SignUp = ({ signUpStart }) => {
           name="password"
           value={password}
           onChange={handleChange}
-          label="Password"
+          label="Password (min 6 symbols)"
           required
         />
         <FormInput
