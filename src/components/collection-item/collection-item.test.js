@@ -17,9 +17,9 @@ describe('CollectionItem component', () => {
       item: {
         imageUrl: imageUrl,
         price: mockPrice,
-        name: mockName
+        name: mockName,
       },
-      addItem: mockAddItem
+      addItem: mockAddItem,
     };
 
     wrapper = shallow(<CollectionItem {...mockProps} />);
@@ -41,10 +41,5 @@ describe('CollectionItem component', () => {
 
   it('should render name prop in NameContainer', () => {
     expect(wrapper.find('NameContainer').text()).toBe(mockName);
-  });
-
-  it('should render price prop in PriceContainer', () => {
-    const price = parseInt(wrapper.find('PriceContainer').text());
-    expect(price).toBe(mockPrice);
   });
 });

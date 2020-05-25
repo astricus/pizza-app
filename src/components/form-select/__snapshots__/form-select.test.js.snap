@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormSelect component should render FormSelect component 1`] = `
+<styled.div>
+  <FormSelectContainer
+    onChange={[MockFunction]}
+    value="USD"
+  >
+    <option
+      value="USD"
+    >
+      USD
+    </option>
+    <option
+      value="EUR"
+    >
+      EUR
+    </option>
+  </FormSelectContainer>
+  <FormSelectLabel
+    className="shrink"
+  >
+    currency
+  </FormSelectLabel>
+</styled.div>
+`;

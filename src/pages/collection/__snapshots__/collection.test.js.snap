@@ -1,35 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CollectionPage should render the CollectionPage component 1`] = `
-<styled.div>
-  <styled.h2>
-    Test
-  </styled.h2>
-  <CollectionItemsContainer>
-    <Connect(CollectionItem)
-      item={
-        Object {
-          "id": 1,
+<CSSTransition
+  appear={true}
+  classNames="collection-animation"
+  in={true}
+  timeout={300}
+>
+  <styled.div>
+    <styled.h2>
+      Test
+    </styled.h2>
+    <CollectionItemsContainer>
+      <Connect(CollectionItem)
+        item={
+          Object {
+            "id": 1,
+          }
         }
-      }
-      key="1"
-    />
-    <Connect(CollectionItem)
-      item={
-        Object {
-          "id": 2,
+        key="1"
+      />
+      <Connect(CollectionItem)
+        item={
+          Object {
+            "id": 2,
+          }
         }
-      }
-      key="2"
-    />
-    <Connect(CollectionItem)
-      item={
-        Object {
-          "id": 3,
+        key="2"
+      />
+      <Connect(CollectionItem)
+        item={
+          Object {
+            "id": 3,
+          }
         }
-      }
-      key="3"
-    />
-  </CollectionItemsContainer>
-</styled.div>
+        key="3"
+      />
+    </CollectionItemsContainer>
+  </styled.div>
+</CSSTransition>
 `;

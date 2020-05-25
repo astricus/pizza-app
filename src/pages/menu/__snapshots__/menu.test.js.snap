@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuPage should render MenuPage component 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "persistor": Object {
+            "persist": [Function],
+          },
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        }
+      }
+    >
+      <MenuPage
+        fetchCollectionsStart={
+          [MockFunction] {
+            "calls": Array [
+              Array [],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        match={
+          Object {
+            "path": "",
+          }
+        }
+      >
+        <styled.div>
+          <div
+            className="sc-AxiKw gtPwVX"
+          >
+            <Suspense
+              fallback={<Spinner />}
+            >
+              <Route
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.lazy),
+                    "_ctor": [Function],
+                    "_result": Object {
+                      "$$typeof": Symbol(react.memo),
+                      "WrappedComponent": [Function],
+                      "compare": null,
+                      "displayName": "Connect(Component)",
+                      "type": [Function],
+                    },
+                    "_status": 1,
+                  }
+                }
+                exact={true}
+                path=""
+              />
+              <Spinner>
+                <styled.div>
+                  <div
+                    className="sc-AxjAm HvuBM"
+                  >
+                    <styled.div>
+                      <div
+                        className="sc-AxirZ hCASNt"
+                      />
+                    </styled.div>
+                  </div>
+                </styled.div>
+              </Spinner>
+            </Suspense>
+          </div>
+        </styled.div>
+      </MenuPage>
+    </Provider>
+  </Router>
+</BrowserRouter>
+`;

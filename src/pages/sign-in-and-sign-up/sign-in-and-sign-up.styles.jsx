@@ -15,4 +15,12 @@ export const SignInAndSignUpContainer = styled.div`
       margin-bottom: 50px;
     }
   }
+
+  &.sign-in-animation-appear {
+    opacity: 0;
+  }
+  &.sign-in-animation-appear-active {
+    opacity: 1;
+    transition: opacity 300ms ease;
+  }
 `;

@@ -10,9 +10,11 @@ exports[`CollectionItem component should render CollectionItem component 1`] = `
     <NameContainer>
       black hat
     </NameContainer>
-    <PriceContainer>
-      10
-    </PriceContainer>
+    <ItemPriceContainer>
+      <Connect(PriceContainer)
+        price={10}
+      />
+    </ItemPriceContainer>
   </CollectionFooterContainer>
   <AddButton
     inverted={true}

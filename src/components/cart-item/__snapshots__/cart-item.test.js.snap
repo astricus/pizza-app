@@ -12,8 +12,10 @@ exports[`should render CartItem component 1`] = `
     </span>
     <span>
       2
-       x $
-      10
+       x 
+      <Connect(PriceContainer)
+        price={10}
+      />
     </span>
   </styled.div>
 </styled.div>

@@ -27,7 +27,9 @@ exports[`CheckoutItem component should render CheckoutItem component 1`] = `
     </div>
   </QuantityContainer>
   <styled.span>
-    10
+    <Connect(PriceContainer)
+      price={10}
+    />
   </styled.span>
   <RemoveButtonContainer
     onClick={[Function]}

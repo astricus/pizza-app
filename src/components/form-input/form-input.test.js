@@ -13,7 +13,7 @@ describe('FormInput component', () => {
     const mockProps = {
       label: 'email',
       value: 'test@gmail.com',
-      handleChange: mockHandleChange
+      handleChange: mockHandleChange,
     };
 
     wrapper = shallow(<FormInput {...mockProps} />);
@@ -37,7 +37,7 @@ describe('FormInput component', () => {
     const mockNewProps = {
       label: '',
       value: 'test@gmail.com',
-      handleChange: mockHandleChange
+      handleChange: mockHandleChange,
     };
 
     const newWrapper = shallow(<FormInput {...mockNewProps} />);

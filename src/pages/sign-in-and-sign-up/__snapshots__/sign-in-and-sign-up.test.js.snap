@@ -1,8 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render SignInAndSignUpPage component 1`] = `
-<styled.div>
-  <Connect(SignIn) />
-  <Connect(SignUp) />
-</styled.div>
+<CSSTransition
+  appear={true}
+  classNames="sign-in-animation"
+  in={true}
+  timeout={300}
+>
+  <styled.div>
+    <Connect(SignIn) />
+    <Connect(SignUp) />
+  </styled.div>
+</CSSTransition>
 `;

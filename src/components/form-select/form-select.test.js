@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import FormInput from './form-input.component';
+import FormSelect from './form-select.component';
 
-describe('FormInput component', () => {
+describe('FormSelect component', () => {
   let wrapper;
   let mockHandleChange;
 
@@ -11,37 +11,21 @@ describe('FormInput component', () => {
     mockHandleChange = jest.fn();
 
     const mockProps = {
-      label: 'email',
-      value: 'test@gmail.com',
-      handleChange: mockHandleChange
+      label: 'currency',
+      handleChange: mockHandleChange,
+      value: 'USD',
     };
 
-    wrapper = shallow(<FormInput {...mockProps} />);
+    wrapper = shallow(<FormSelect {...mockProps} />);
   });
 
-  it('should render FormInput component', () => {
+  it('should render FormSelect component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should call handleChange method when input changes', () => {
-    wrapper.find('FormInputContainer').simulate('change');
+    wrapper.find('FormSelectContainer').simulate('change');
 
     expect(mockHandleChange).toHaveBeenCalled();
-  });
-
-  it('should render FormInputLabel if there is a label', () => {
-    expect(wrapper.exists('FormInputLabel')).toBe(true);
-  });
-
-  it('should not render FormInputLabel if there is no label', () => {
-    const mockNewProps = {
-      label: '',
-      value: 'test@gmail.com',
-      handleChange: mockHandleChange
-    };
-
-    const newWrapper = shallow(<FormInput {...mockNewProps} />);
-
-    expect(newWrapper.exists('FormInputLabel')).toBe(false);
   });
 });

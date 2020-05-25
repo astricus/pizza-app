@@ -1,4 +1,5 @@
 import React from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -14,15 +15,24 @@ import {
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 export const Orders = ({ orders, currentUser }) => (
-  <OrdersPageContainer>
-    <OrdersPageHeader>User: {currentUser.displayName}</OrdersPageHeader>
-    <OrdersPageText>Total orders: {orders ? orders.length : 0}</OrdersPageText>
-    {orders
-      ? orders.map((order, idx) => (
-          <Order key={order.id} order={order} idx={idx + 1} />
-        ))
-      : null}
-  </OrdersPageContainer>
+  <CSSTransition
+    appear={true}
+    in={true}
+    timeout={300}
+    classNames="orders-animation"
+  >
+    <OrdersPageContainer>
+      <OrdersPageHeader>User: {currentUser.displayName}</OrdersPageHeader>
+      <OrdersPageText>
+        Total orders: {orders ? orders.length : 0}
+      </OrdersPageText>
+      {orders
+        ? orders.map((order, idx) => (
+            <Order key={order.id} order={order} idx={idx + 1} />
+          ))
+        : null}
+    </OrdersPageContainer>
+  </CSSTransition>
 );
 
 const mapStateToProps = createStructuredSelector({

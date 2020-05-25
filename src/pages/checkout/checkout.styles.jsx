@@ -11,6 +11,14 @@ export const CheckoutPageContainer = styled.div`
   button {
     margin-left: auto;
   }
+
+  &.checkout-animation-appear {
+    opacity: 0;
+  }
+  &.checkout-animation-appear-active {
+    opacity: 1;
+    transition: opacity 300ms ease;
+  }
 `;
 
 export const CartItemsContainer = styled.div`

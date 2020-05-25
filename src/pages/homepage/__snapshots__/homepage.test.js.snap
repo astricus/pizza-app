@@ -1,7 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render Homepage component 1`] = `
-<styled.div>
-  <Connect(Directory) />
-</styled.div>
+<CSSTransition
+  appear={true}
+  classNames="homepage-animation"
+  in={true}
+  timeout={300}
+>
+  <styled.div>
+    <styled.h1>
+      Pizza Online Ordering Application
+    </styled.h1>
+    <styled.div>
+      <styled.h2>
+        A moment of pleasure at...
+      </styled.h2>
+      <styled.span>
+        425°
+      </styled.span>
+      <styled.a
+        href="/menu"
+      >
+        Order now
+      </styled.a>
+    </styled.div>
+  </styled.div>
+</CSSTransition>
 `;

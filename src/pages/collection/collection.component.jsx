@@ -1,4 +1,5 @@
 import React from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 
 import CollectionItem from '../../components/collection-item/collection-item.component';
@@ -14,14 +15,21 @@ import {
 export const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
   return (
-    <CollectionPageContainer>
-      <CollectionTitle>{title}</CollectionTitle>
-      <CollectionItemsContainer>
-        {items.map((item) => (
-          <CollectionItem key={item.id} item={item} />
-        ))}
-      </CollectionItemsContainer>
-    </CollectionPageContainer>
+    <CSSTransition
+      appear={true}
+      in={true}
+      timeout={300}
+      classNames="collection-animation"
+    >
+      <CollectionPageContainer>
+        <CollectionTitle>{title}</CollectionTitle>
+        <CollectionItemsContainer>
+          {items.map((item) => (
+            <CollectionItem key={item.id} item={item} />
+          ))}
+        </CollectionItemsContainer>
+      </CollectionPageContainer>
+    </CSSTransition>
   );
 };
 

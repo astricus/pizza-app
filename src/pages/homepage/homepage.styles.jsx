@@ -11,6 +11,13 @@ export const HomePageContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100vh;
+  &.homepage-animation-appear {
+    opacity: 0;
+  }
+  &.homepage-animation-appear-active {
+    opacity: 1;
+    transition: opacity 300ms ease;
+  }
 `;
 
 export const HomePageTitle = styled.h1`

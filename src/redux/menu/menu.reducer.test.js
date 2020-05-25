@@ -4,6 +4,8 @@ import menuReducer from './menu.reducer';
 const initialState = {
   collections: null,
   isFetching: false,
+  currencyCoefficient: 1,
+  currencySymbol: '$',
   errorMessage: undefined,
 };
 

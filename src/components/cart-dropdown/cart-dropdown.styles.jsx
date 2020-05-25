@@ -20,6 +20,23 @@ export const CartDropdownContainer = styled.div`
   @media screen and (max-width: 800px) {
     top: 60px;
   }
+
+  &.cart-dropdown-animation-enter {
+    opacity: 0;
+  }
+  &.cart-dropdown-animation-enter-active {
+    opacity: 1;
+    transition: opacity 200ms ease;
+  }
+  &.cart-dropdown-animation-exit {
+    display: flex !important;
+    opacity: 1;
+  }
+  &.cart-dropdown-animation-exit-active {
+    display: flex !important;
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
 `;
 
 export const CartDropdownButton = styled(CustomButton)`

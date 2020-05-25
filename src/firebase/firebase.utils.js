@@ -57,11 +57,13 @@ export const getUserOrders = async (userId) => {
     .collection('orders')
     .where('userId', '==', userId);
   const snapShot = await ordersRef.get();
-  const orders = snapShot.docs.map((order) => ({
-    ...order.data(),
-    createdAt: order.data().createdAt.toDate(),
-    id: order.id,
-  }));
+  const orders = snapShot.docs
+    .map((order) => ({
+      ...order.data(),
+      createdAt: order.data().createdAt.toDate(),
+      id: order.id,
+    }))
+    .sort((a, b) => a.createdAt < b.createdAt);
   return orders;
 };
 

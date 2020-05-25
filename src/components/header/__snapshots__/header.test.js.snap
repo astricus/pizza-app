@@ -5,20 +5,20 @@ exports[`Header component should render Header component 1`] = `
   <Styled(Link)
     to="/"
   >
-    <ForwardRef
+    <ForwardRef(SvgLogo)
       className="logo"
     />
   </Styled(Link)>
   <styled.div>
     <OptionLink
-      to="/shop"
+      to="/menu"
     >
-      SHOP
+      MENU
     </OptionLink>
     <OptionLink
-      to="/shop"
+      to="/orders"
     >
-      CONTACT
+      MY ORDERS
     </OptionLink>
     <OptionLink
       as="div"
@@ -28,5 +28,6 @@ exports[`Header component should render Header component 1`] = `
     </OptionLink>
     <Connect(CartIcon) />
   </styled.div>
+  <withRouter(Connect(CartDropdown)) />
 </styled.div>
 `;

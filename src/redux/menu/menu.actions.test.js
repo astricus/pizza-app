@@ -3,7 +3,6 @@ import {
   fetchCollectionsStart,
   fetchCollectionsSuccess,
   fetchCollectionsFailure,
-  fetchCollectionsStartAsync,
 } from './menu.actions';
 
 describe('fetchCollectionsStart action', () => {
@@ -35,15 +34,5 @@ describe('fetchCollectionsFailure action', () => {
 
     expect(action.type).toEqual(MenuActionTypes.FETCH_COLLECTIONS_FAILURE);
     expect(action.payload).toEqual('errored');
-  });
-});
-
-describe('fetchCollectionsStartAsync action', () => {
-  it('should create the fetchCollectionsStartAsync action', () => {
-    const mockActionCreator = fetchCollectionsStartAsync();
-    const mockDispatch = jest.fn();
-    mockActionCreator(mockDispatch);
-
-    expect(mockDispatch).toHaveBeenCalledWith(fetchCollectionsStart());
   });
 });

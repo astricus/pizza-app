@@ -4,6 +4,14 @@ export const CollectionPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &.collection-animation-appear {
+    opacity: 0;
+  }
+  &.collection-animation-appear-active {
+    opacity: 1;
+    transition: opacity 300ms ease;
+  }
 `;
 
 export const CollectionTitle = styled.h2`

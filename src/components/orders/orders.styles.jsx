@@ -8,6 +8,14 @@ export const OrdersPageContainer = styled.div`
     margin: 70px auto 30px;
     width: 90%;
   }
+
+  &.orders-animation-appear {
+    opacity: 0;
+  }
+  &.orders-animation-appear-active {
+    opacity: 1;
+    transition: opacity 300ms ease;
+  }
 `;
 
 export const OrdersPageHeader = styled.h2`
