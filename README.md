@@ -15,7 +15,7 @@ List of libraries:
 - Styling was built with [Styled Components](https://styled-components.com/), Sass, without any styling frameworks
 - Animations were built with [React Transition Group](https://reactcommunity.org/react-transition-group/)
 - Tests were written with a help of [Jest](https://jestjs.io/) and [Enzyme](https://enzymejs.github.io/enzyme/) with [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) serializer
-- All libraries are up-to-date
+- All libraries are up-to-date (May, 2020)
 
 Application data (users, orders, cart, menu) is stored in `firestore`.
 
