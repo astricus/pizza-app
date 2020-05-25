@@ -22,7 +22,12 @@ const SignUp = ({ signUpStart }) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("passwords don't match");
+      alert("Passwords don't match");
+      return;
+    }
+
+    if (password.length < 6) {
+      alert('Password should contain more than 6 symbols');
       return;
     }
 
