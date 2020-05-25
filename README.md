@@ -8,11 +8,11 @@
 
 ## :fire: Description
 
-This project was bootstrapped with . Sass, without any styling frameworks. List of libraries:
+List of libraries:
 
 - Backend was built with [Firebase](https://firebase.google.com/)
 - Frontend was built with [React](https://reactjs.org/), [Create React App](https://github.com/facebook/create-react-app), [Redux](https://redux.js.org/), [Reselect](https://github.com/reduxjs/reselect), [Redux-Saga](https://redux-saga.js.org/)
-- Styling was built with [Styled Components](https://styled-components.com/)
+- Styling was built with [Styled Components](https://styled-components.com/), Sass, without any styling frameworks
 - Animations were built with [React Transition Group](https://reactcommunity.org/react-transition-group/)
 - Tests were written with a help of [Jest](https://jestjs.io/) and [Enzyme](https://enzymejs.github.io/enzyme/) with [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) serializer
 - All libraries are up-to-date
