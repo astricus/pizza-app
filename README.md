@@ -1,4 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <h3 align="center">Pizza App</h3>
+  <p align="center">
+  It is a test pizza online ordering application made.<br>
+  DEMO &rarr; <a href="https://pizza-astricus-app.herokuapp.com/" target="_blank" rel="noopener noreferrer">Pizza App</a>
+  </p>
+</p>
+
+## :fire: Description
+
+This project was bootstrapped with . Sass, without any styling frameworks. List of features:
+
+- Backend was built with [Firebase](https://firebase.google.com/)
+- Frontend was built with [React](https://reactjs.org/), [Create React App](https://github.com/facebook/create-react-app), [Redux](https://redux.js.org/), [Reselect](https://github.com/reduxjs/reselect), [Redux-Saga](https://redux-saga.js.org/)
+- Styling was built with [Styled Components](https://styled-components.com/)
+- Animations were built with [React Transition Group](https://reactcommunity.org/react-transition-group/)
+- Tests were written with a help of [Jest](https://jestjs.io/) and [Enzyme](https://enzymejs.github.io/enzyme/) with [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) serializer
+- All libraries are up-to-date
+
+Application data (users, posts, projects) is stored in `firestore`.
 
 ## Available Scripts
 
