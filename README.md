@@ -1,7 +1,7 @@
 <p align="center">
   <h3 align="center">Pizza App</h3>
   <p align="center">
-  It is a test pizza online ordering application made.<br>
+  It is a test pizza online ordering application.<br>
   DEMO &rarr; <a href="https://pizza-astricus-app.herokuapp.com/" target="_blank" rel="noopener noreferrer">Pizza App</a>
   </p>
 </p>
