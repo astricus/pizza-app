@@ -8,7 +8,7 @@
 
 ## :fire: Description
 
-This project was bootstrapped with . Sass, without any styling frameworks. List of features:
+This project was bootstrapped with . Sass, without any styling frameworks. List of libraries:
 
 - Backend was built with [Firebase](https://firebase.google.com/)
 - Frontend was built with [React](https://reactjs.org/), [Create React App](https://github.com/facebook/create-react-app), [Redux](https://redux.js.org/), [Reselect](https://github.com/reduxjs/reselect), [Redux-Saga](https://redux-saga.js.org/)
@@ -17,7 +17,16 @@ This project was bootstrapped with . Sass, without any styling frameworks. List 
 - Tests were written with a help of [Jest](https://jestjs.io/) and [Enzyme](https://enzymejs.github.io/enzyme/) with [enzyme-to-json](https://github.com/adriantoine/enzyme-to-json) serializer
 - All libraries are up-to-date
 
-Application data (users, posts, projects) is stored in `firestore`.
+Application data (users, orders, cart, menu) is stored in `firestore`.
+
+List of features:
+
+- User can order one or multiple different pizzas :pizza:
+- User can choose currency (:dollar: or :euro:) of the order
+- Delivery cost is added to the final total price
+- All orders are stored in database
+- User can sign-up, sign-in, sign-in with Google account. After sign-up user data is stored in database. As a signed-in user can view his/her orders
+- User can add pizza/pizzas to cart. If a user is signed-in, his/her items in cart are also stored in database, so he/she can continue placing an order anytime. After an order has been placed, cart is cleared
 
 ## Available Scripts
 
